@@ -1,0 +1,52 @@
+﻿Dll не используется, поэтому
+ npm run build:dll  опускаем везде
+
+1. Не отрисовывалось окно
+Добавить
+webPreferences: {
+      nodeIntegration: true,
+    },
+ в
+mainWindow = new BrowserWindow({
+   .......
+  }
+2. Не указано, что нужно установить модуль "uglifyjs-webpack-plugin"  версии  "^1.3.0" - более новый не идет
+3. Ошибка
+  "ERROR in __offline_serviceworker from UglifyJs
+    DefaultsError: `warnings` is not a supported option"
+
+ модуль "uglifyjs-webpack-plugin" должен быть версии
+   "uglifyjs-webpack-plugin": "^1.3.0",
+
+4. Опечатка
+`file://${path.resolve(path.join(__dirname, '..', 'build'))}/index.html`,
+должно быть app/build
+
+5. в https://github.com/mjangir/reactron не генерировался пакет установщика из-за
+отсутствия  npm install electron-updater@4.0.0
+
+6. Не запускался скриптом "dist":"build"
+c версией  "electron-builder": "^21.0.15",
+с версией 20.25.0 пошло
+
+ npm install electron@2.0.8
+
+7. Ошибка
+   Not allowed to load local resource
+   new BrowserWindow({
+   webPreferences: {
+    webSecurity: false
+   }
+  });
+
+
+
+8. Странность -- не предупреждение и не ошибка
+   Child html-webpack-plugin for "index.html":
+    [1]      1 asset
+    [1]     Entrypoint undefined = index.html
+
+реактрон там нет такого сообщения
+"html-webpack-plugin": "3.2.0",
+этот проект тоже
+"html-webpack-plugin": "3.2.0",

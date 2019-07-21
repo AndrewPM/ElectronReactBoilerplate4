@@ -1,0 +1,15 @@
+{
+  "name": "reactron",
+  "productName": "Reactron",
+  "version": "1.0.0",
+  "description": "ReactBoilerplate 4.0 in electron",
+  "license": "MIT",
+  "copyright": "Mik Andr",
+  "author": {
+    "name": "Mik Andrew",
+    "email": "xxxx@gmail.com"
+  },
+  "main": "./electron/main.prod.js",
+  "scripts": {},
+  "dependencies": {}
+}
