@@ -53,10 +53,10 @@ c версией  "electron-builder": "^21.0.15",
  можно игнорировать - это не ошибка
  
  9. Инсталлированное приложение не отображало index.html
-  в режиме "asar": true, сборщика
+  в режиме ("asar": true) сборщика
   проблема была в том, что в этом случае index.html оказывается внутри архива app.asar/build,
   а путь в main.dev.js  оставался прежним app/build - без архива
-  Для того. чтобы оставалась возможность заускать прод версию пришлось ввести переменную окружения
+  Для того, чтобы оставалась возможность заgускать прод, версию пришлось ввести переменную окружения
   ME_ENV=me
   "start-prod": "cross-env HOT=1 NODE_ENV=production BABEL_ENV=electron ME_ENV=me node --trace-warnings ./node_modules/electron/cli.js -r @babel/register ./app/electron/main.prod.js",
   которая и переключает путь в вариант без архивации.
