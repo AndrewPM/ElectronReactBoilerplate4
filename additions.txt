@@ -28,7 +28,7 @@ mainWindow = new BrowserWindow({
 6. Не запускался скриптом "dist":"build"
 c версией  "electron-builder": "^21.0.15",
 с версией 20.25.0 пошло
-
+npm run install electron-builder@20.25.0 --save-dev
  npm install electron@2.0.8
 
 7. Ошибка
