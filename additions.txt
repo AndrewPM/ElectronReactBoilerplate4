@@ -51,7 +51,7 @@ npm run install electron-builder@20.25.0 --save-dev
 этот проект тоже
 "html-webpack-plugin": "3.2.0",
  можно игнорировать - это не ошибка
- 
+
  9. Инсталлированное приложение не отображало index.html
   в режиме ("asar": true) сборщика
   проблема была в том, что в этом случае index.html оказывается внутри архива app.asar/build,
@@ -61,7 +61,22 @@ npm run install electron-builder@20.25.0 --save-dev
   "start-prod": "cross-env HOT=1 NODE_ENV=production BABEL_ENV=electron ME_ENV=me node --trace-warnings ./node_modules/electron/cli.js -r @babel/register ./app/electron/main.prod.js",
   которая и переключает путь в вариант без архивации.
 
-    
-  
- 
- 
+
+  10  Ошибка "модуль не найден"
+  при выполнении  "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+  Изменил строчку в
+  D:\JavaScript\ElectronReactBoilerplate4\.eslintrc.js
+  config: './internals/webpack/webpack.prod.babel.js',
+  не идет
+зачем это
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './internals/webpack/webpack.prod.babel.js',
+      },
+    },
+  },
+
+
+
+
