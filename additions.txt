@@ -28,7 +28,7 @@ mainWindow = new BrowserWindow({
 6. Не запускался скриптом "dist":"build"
 c версией  "electron-builder": "^21.0.15",
 с версией 20.25.0 пошло
-
+npm run install electron-builder@20.25.0 --save-dev
  npm install electron@2.0.8
 
 7. Ошибка
@@ -51,17 +51,32 @@ c версией  "electron-builder": "^21.0.15",
 этот проект тоже
 "html-webpack-plugin": "3.2.0",
  можно игнорировать - это не ошибка
- 
+
  9. Инсталлированное приложение не отображало index.html
-  в режиме "asar": true, сборщика
+  в режиме ("asar": true) сборщика
   проблема была в том, что в этом случае index.html оказывается внутри архива app.asar/build,
   а путь в main.dev.js  оставался прежним app/build - без архива
-  Для того. чтобы оставалась возможность заускать прод версию пришлось ввести переменную окружения
+  Для того, чтобы оставалась возможность заgускать прод, версию пришлось ввести переменную окружения
   ME_ENV=me
   "start-prod": "cross-env HOT=1 NODE_ENV=production BABEL_ENV=electron ME_ENV=me node --trace-warnings ./node_modules/electron/cli.js -r @babel/register ./app/electron/main.prod.js",
   которая и переключает путь в вариант без архивации.
 
-    
-  
- 
- 
+
+  10  Ошибка "модуль не найден"
+  при выполнении  "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
+  Изменил строчку в
+  D:\JavaScript\ElectronReactBoilerplate4\.eslintrc.js
+  config: './internals/webpack/webpack.prod.babel.js',
+  не идет
+зачем это
+  settings: {
+    'import/resolver': {
+      webpack: {
+        config: './internals/webpack/webpack.prod.babel.js',
+      },
+    },
+  },
+
+
+
+
