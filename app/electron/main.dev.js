@@ -30,7 +30,7 @@ const installExtensions = async () => {
     extensions.map(name => installer.default(installer[name], forceDownload)),
   ).catch(console.log);
 };
-
+console.log('myObject');
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();

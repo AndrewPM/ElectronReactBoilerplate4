@@ -95,6 +95,13 @@ npm run install electron-builder@20.25.0 --save-dev
     здесь сработает;
    ......\app\containers\HomePage\saga.js
 
+13. 2+2 = 4
+
+14 Отладка main
+console.log(myObject);
+   в VSC
+   https://marketplace.visualstudio.com/items?itemName=kodetech.electron-debug
+
 
 
 
