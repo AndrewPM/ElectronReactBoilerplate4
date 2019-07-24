@@ -56,7 +56,6 @@ export function HomePage({
     error,
     repos,
   };
-
   return (
     <article>
       <Helmet>

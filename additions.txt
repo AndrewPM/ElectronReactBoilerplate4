@@ -77,6 +77,25 @@ npm run install electron-builder@20.25.0 --save-dev
     },
   },
 
+  11. Запуск "start" = "start": "cross-env NODE_ENV=production ME_ENV=me electron ./app/"
+   запускает  выполнение
+    "build" = "build": "concurrently \"npm run build:main\" \"npm run build:renderer\""
+   т.е. npm run build:main , затем npm run build:renderer, а затем уже и
+   cross-env NODE_ENV=production ME_ENV=me electron ./app/
+   т.е. после "start" по умолчанию выполяется  "build", а потом уже то, что в "start" после "="
+
+  12. Отладка возможна в браузере
+   запускаем
+    "start-renderer-dev" и
+    "start-main-dev"  в отдельных окнах
+  Средства отладки см. здесь:   https://medium.com/@baphemot/intro-to-debugging-reactjs-applications-67cf7a50b3dd
+    console.log(myObject);
+    debugger;
+    директивы нужно располагать в js коде, но не в jsx( не сработает)
+    здесь сработает;
+   ......\app\containers\HomePage\saga.js
+
+
 
 
 

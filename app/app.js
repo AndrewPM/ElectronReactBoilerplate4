@@ -68,6 +68,8 @@ if (module.hot) {
     render(translationMessages);
   });
 }
+// console.log('ddd');
+// debugger;
 
 // Chunked polyfill for browsers without Intl support
 if (!window.Intl) {
