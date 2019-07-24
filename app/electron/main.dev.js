@@ -73,7 +73,7 @@ app.on('ready', async () => {
       path.join(__dirname, '..', '..', pathVar),
     )}/index.html`,
   );
-
+  console.log(`file://${path.resolve( path.join(__dirname, '..', '..', pathVar),  )}/index.html`);
   mainWindow.webContents.on('did-finish-load', () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
