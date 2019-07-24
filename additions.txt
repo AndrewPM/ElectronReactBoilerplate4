@@ -92,7 +92,7 @@ npm run install electron-builder@20.25.0 --save-dev
     console.log(myObject);
     debugger;
     директивы нужно располагать в js коде, но не в jsx( не сработает)
-    здесь сработает;
+    здесь сработает:
    ......\app\containers\HomePage\saga.js
 
 13. 2+2 = 4
@@ -103,7 +103,21 @@ console.log(myObject);
    https://marketplace.visualstudio.com/items?itemName=kodetech.electron-debug
    http://blog.matsu.io/debug-electron-vscode
 
+   Debugging ES6 in Visual Studio Code
+   https://medium.com/@drcallaway/debugging-es6-in-visual-studio-code-4444db797954
+   Отладка JavaScript в production с помощью Source Maps
+   https://getinstance.info/articles/tools/debuggable-javascript-with-source-maps/
 
+
+15. Странные комбинации - разобраться
+"start-electron-prod": "cross-env HOT=1 NODE_ENV=production  BABEL_ENV=electron ME_ENV=me  node --trace-warnings ./node_modules/electron/cli.js -r @babel/register                                                         ./app/electron/main.prod.js"
+"start-main-dev":      "cross-env HOT=1 NODE_ENV=development BABEL_ENV=electron ME_ENV=me  node --trace-warnings ./node_modules/electron/cli.js -r @babel/register                                                         ./app/electron/main.dev.js"
+"start-main-prod":     "cross-env       NODE_ENV=production  BABEL_ENV=electron            node --trace-warnings                                -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.main.prod.js --colors",
+
+16. Эти команды запускаются поочередно
+start-main-prod
+start-renderer-prod
+start-electron-prod"
 
 
 

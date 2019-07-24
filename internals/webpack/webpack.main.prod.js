@@ -13,9 +13,6 @@ export default baseConfig({
     filename: './main.prod.js',
   },
   optimization: {
-    /* splitChunks: {
-      chunks: 'all',
-    }, */
     minimizer: [
       new UglifyJSPlugin({
         parallel: true,
