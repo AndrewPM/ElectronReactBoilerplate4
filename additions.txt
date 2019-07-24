@@ -101,6 +101,7 @@ npm run install electron-builder@20.25.0 --save-dev
 console.log(myObject);
    в VSC
    https://marketplace.visualstudio.com/items?itemName=kodetech.electron-debug
+   http://blog.matsu.io/debug-electron-vscode
 
 
 
