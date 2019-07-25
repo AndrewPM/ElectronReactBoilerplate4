@@ -74,9 +74,9 @@ app.on('ready', async () => {
     `file://${path.resolve( path.join(__dirname, '..', '..', pathVar))}/index.html`,
   );
 
-  console.log('ddddd');
   // prettier-ignore
   console.log( `file://${path.resolve( path.join(__dirname, '..', '..', pathVar))}/index.html`);
+
   mainWindow.webContents.on('did-finish-load', () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
