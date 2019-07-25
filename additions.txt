@@ -97,7 +97,7 @@ npm run install electron-builder@20.25.0 --save-dev
 
 13. 2+2 = 4
 
-14 Отладка main
+14 Отладка В VSC
 console.log(myObject);
    в VSC
    https://marketplace.visualstudio.com/items?itemName=kodetech.electron-debug
@@ -108,6 +108,11 @@ console.log(myObject);
    Отладка JavaScript в production с помощью Source Maps
    https://getinstance.info/articles/tools/debuggable-javascript-with-source-maps/
 
+   https://stackoverflow.com/questions/29971572/how-do-i-add-environment-variables-to-launch-json-in-vscode
+
+  получаем main.prod.js.map
+  "start-main-prod": "cross-env NODE_ENV=production  BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.main.prod.js --colors",
+   и далее запускаем отладчик.
 
 15. Странные комбинации - разобраться
 "start-electron-prod": "cross-env HOT=1 NODE_ENV=production  BABEL_ENV=electron ME_ENV=me  node --trace-warnings ./node_modules/electron/cli.js -r @babel/register                                                         ./app/electron/main.prod.js"

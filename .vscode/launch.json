@@ -8,7 +8,10 @@
       "cwd": "${workspaceRoot}",
       "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
       "program": "${workspaceRoot}/app/electron/main.dev.js",
-      "outFiles": [ "${workspaceRoot}/app/electron/**/*.js" ],
+      "outFiles": ["${workspaceRoot}/app/electron/**/*.js"],
+      "env": {
+        "ME_ENV": "me"
+      },
       "windows": {
         "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
       },
@@ -22,9 +25,12 @@
       "protocol": "inspector",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "program": "${workspaceRoot}/app/electron/main.dev.js",
-      "outFiles": [ "${workspaceRoot}/app/electron/**/*.js" ],
+      "outFiles": ["${workspaceRoot}/app/electron/**/*.js"],
+      "env": {
+        "ME_ENV": "me"
+      },
       "runtimeArgs": [
-        "--remote-debugging-port=9223",
+        "--remote-debugging-port=9223"
         /* "."*/
       ],
       "windows": {

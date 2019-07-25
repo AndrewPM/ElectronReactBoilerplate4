@@ -60,20 +60,23 @@ app.on('ready', async () => {
   let pathVar = '';
   if (process.env.ME_ENV === 'me') pathVar = 'app/build';
   else pathVar = 'app.asar/build';
-
+  // else pathVar = 'app/build';
   /* console.log(process.env.ME_ENV);
   console.log(pathVar);
   console.log(process.env.ME_ENV === 'me'); */
 
   const path = require('path');
+
+  // prettier-ignore
   mainWindow.loadURL(
     // `file://${path.resolve(path.join(__dirname, '..', '..', 'build'))}/index.html`,
     // `file://${path.resolve( path.join(__dirname, '..', '..', 'app/build') )}/index.html`,
-    `file://${path.resolve(
-      path.join(__dirname, '..', '..', pathVar),
-    )}/index.html`,
+    `file://${path.resolve( path.join(__dirname, '..', '..', pathVar))}/index.html`,
   );
-  console.log(`file://${path.resolve( path.join(__dirname, '..', '..', pathVar),  )}/index.html`);
+
+  console.log('ddddd');
+  // prettier-ignore
+  console.log( `file://${path.resolve( path.join(__dirname, '..', '..', pathVar))}/index.html`);
   mainWindow.webContents.on('did-finish-load', () => {
     if (!mainWindow) {
       throw new Error('"mainWindow" is not defined');
