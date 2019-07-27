@@ -115,12 +115,12 @@ console.log(myObject);
 
 15.  -----------------------------------отладка и упаковка -------------------------------------------------
    Как запустить отладчик в VScode
-     a) получите main.prod.js.map
+     a) получите main.prod.js.map:
        "start-main-webpack-dev": "cross-env HOT=1 NODE_ENV=development  BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.main.prod.js --colors",
 
-     б) Запустите renderer часть приложения
+     б) Запустите renderer часть приложения:
       "dev": "cross-env START_HOT=1 npm run start-renderer-dev",
-         что запустит следующий скрипт
+         что запустит следующий скрипт:
          "start-renderer-dev": "cross-env NODE_ENV=development node --trace-warnings ./node_modules/webpack-dev-server/bin/webpack-dev-server --config internals/webpack/webpack.dev.babel.js",
 
      это даст возможность  запускать отладчики одновременно и устанавливать
@@ -197,6 +197,12 @@ console.log(myObject);
       "args": ["."],
       "outputCapture": "std"
     },
+
+17. Коммуникации между main и  renderer
+ Пример отсюда https://electronjs.org/docs/api/ipc-main
+ работает.
+ Если синхронный вариант не получает ответа в renderer ,
+  то отладчик не сможет подконектиться к нему.
 
 
 

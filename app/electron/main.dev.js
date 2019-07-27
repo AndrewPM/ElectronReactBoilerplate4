@@ -1,5 +1,5 @@
 /* eslint global-require: 0, no-console: 0 */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 // require('custom-env').env();
 
 let mainWindow = null;
@@ -83,7 +83,23 @@ app.on('ready', async () => {
     }
     mainWindow.show();
     mainWindow.focus();
+    // notify the Renderer that Main is ready
+    // mainWindow.webContents.send('mainReady');
   });
+
+  // we expect 'rendererReady' notification from Renderer
+  // prettier-ignore
+
+
+  ipcMain.on('asynchronous-message', (event, arg) => {
+    console.log(arg) // prints "ping"
+    event.reply('asynchronous-reply', 'pong1')
+  })
+
+  ipcMain.on('synchronous-message', (event, arg) => {
+    console.log(arg) // prints "ping"
+    event.returnValue = 'pong2'
+  })
 
   mainWindow.on('closed', () => {
     mainWindow = null;

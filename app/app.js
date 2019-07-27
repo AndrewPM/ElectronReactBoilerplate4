@@ -32,6 +32,18 @@ import configureStore from './configureStore';
 // Import i18n messages
 import { translationMessages } from './i18n';
 
+const { ipcRenderer, remote } = require('electron');
+
+
+console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+
+ipcRenderer.on('asynchronous-reply', (event, arg) => {
+  console.log(arg) // prints "pong"
+})
+ipcRenderer.send('asynchronous-message', 'ping')
+
+
+
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
 const openSansObserver = new FontFaceObserver('Open Sans', {});
@@ -68,7 +80,7 @@ if (module.hot) {
     render(translationMessages);
   });
 }
-// console.log('ddd');
+ //console.log('ddd');
 // debugger;
 
 // Chunked polyfill for browsers without Intl support
@@ -89,6 +101,8 @@ if (!window.Intl) {
 } else {
   render(translationMessages);
 }
+
+ipcRenderer.send('rendererReady', null);
 
 // Install ServiceWorker and AppCache in the end since
 // it's not most important operation and if main code fails,
