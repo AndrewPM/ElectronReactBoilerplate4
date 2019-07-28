@@ -136,7 +136,6 @@ function () {
   };
 }();
 
-console.log('myObject');
 electron__WEBPACK_IMPORTED_MODULE_0__["app"].on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     electron__WEBPACK_IMPORTED_MODULE_0__["app"].quit();
@@ -161,7 +160,8 @@ _asyncToGenerator(function* () {
       partition: 'persist:webviewsession' // Что это?
 
     }
-  });
+  }); // mainWindow.setMenu(null) //this will r menu bar
+
   /* mainWindow.loadURL('http://localhost:3000'); */
 
   let pathVar = '';
@@ -185,11 +185,11 @@ _asyncToGenerator(function* () {
     }
 
     mainWindow.show();
-    mainWindow.focus(); // notify the Renderer that Main is ready
-    // mainWindow.webContents.send('mainReady');
+    mainWindow.focus();
   }); // we expect 'rendererReady' notification from Renderer
   // prettier-ignore
 
+  console.log('hhhhhhhhhhhh');
   electron__WEBPACK_IMPORTED_MODULE_0__["ipcMain"].on('asynchronous-message', (event, arg) => {
     console.log(arg); // prints "ping"
 

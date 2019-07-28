@@ -30,7 +30,7 @@ const installExtensions = async () => {
     extensions.map(name => installer.default(installer[name], forceDownload)),
   ).catch(console.log);
 };
-console.log('myObject');
+
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit();
@@ -56,6 +56,8 @@ app.on('ready', async () => {
       partition: 'persist:webviewsession', // Что это?
     },
   });
+  // mainWindow.setMenu(null) //this will r menu bar
+
   /* mainWindow.loadURL('http://localhost:3000'); */
   let pathVar = '';
   if (process.env.ME_ENV === 'me') pathVar = 'app/build';
@@ -83,14 +85,11 @@ app.on('ready', async () => {
     }
     mainWindow.show();
     mainWindow.focus();
-    // notify the Renderer that Main is ready
-    // mainWindow.webContents.send('mainReady');
   });
 
   // we expect 'rendererReady' notification from Renderer
   // prettier-ignore
-
-
+  console.log('hhhhhhhhhhhh')
   ipcMain.on('asynchronous-message', (event, arg) => {
     console.log(arg) // prints "ping"
     event.reply('asynchronous-reply', 'pong1')

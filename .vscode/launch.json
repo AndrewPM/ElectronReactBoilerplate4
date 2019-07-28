@@ -6,6 +6,7 @@
       "request": "launch",
       "name": "Electron: Main",
       "protocol": "inspector",
+      "console": "integratedTerminal",
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron",
       "program": "${workspaceRoot}/app/electron/main.dev.js",
       "outFiles": ["${workspaceRoot}/app/electron/**/*.js"],

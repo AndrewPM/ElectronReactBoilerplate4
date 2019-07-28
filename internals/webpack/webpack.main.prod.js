@@ -4,7 +4,7 @@ import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import baseConfig from './webpack.base.babel';
 
 export default baseConfig({
-  devtool: 'source-map',
+  devtool: false,
   mode: 'production',
   target: 'electron-main',
   entry: path.resolve(process.cwd(), 'app/electron/main.dev.js'),
