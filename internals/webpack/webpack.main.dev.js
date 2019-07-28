@@ -5,7 +5,7 @@ import baseConfig from './webpack.base.babel';
 
 export default baseConfig({
   devtool: 'source-map',
-  mode: 'production',
+  mode: 'development',
   target: 'electron-main',
   entry: path.resolve(process.cwd(), 'app/electron/main.dev.js'),
   output: {
@@ -13,7 +13,7 @@ export default baseConfig({
     filename: './main.prod.js',
   },
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new UglifyJSPlugin({
         parallel: true,
@@ -24,8 +24,8 @@ export default baseConfig({
   },
   plugins: [
     new webpack.EnvironmentPlugin({
-      NODE_ENV: 'production',
-      DEBUG_PROD: false,
+      NODE_ENV: 'development',
+      DEBUG_PROD: true,
       START_MINIMIZED: false,
     }),
   ],
