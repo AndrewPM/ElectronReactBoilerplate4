@@ -1,7 +1,7 @@
 ﻿Dll не используется, поэтому
  npm run build:dll  опускаем везде
 
-1. Не отрисовывалось окно
+1. (Косяк "Manish Jangir") Не отрисовывалось окно
 Добавить
 webPreferences: {
       nodeIntegration: true,
@@ -10,7 +10,7 @@ webPreferences: {
 mainWindow = new BrowserWindow({
    .......
   }
-2. Не указано, что нужно установить модуль "uglifyjs-webpack-plugin"  версии  "^1.3.0" - более новый не идет
+2. (Косяк "Manish Jangir") Не указано, что нужно установить модуль "uglifyjs-webpack-plugin"  версии  "^1.3.0" - более новый не идет
 2.1 Ошибка
   "ERROR in __offline_serviceworker from UglifyJs
     DefaultsError: `warnings` is not a supported option"
@@ -18,20 +18,20 @@ mainWindow = new BrowserWindow({
  модуль "uglifyjs-webpack-plugin" должен быть версии
    "uglifyjs-webpack-plugin": "^1.3.0",
 
-4. Опечатка
+4. (Косяк "Manish Jangir") Опечатка
 `file://${path.resolve(path.join(__dirname, '..', 'build'))}/index.html`,
 должно быть app/build
 
 5. в https://github.com/mjangir/reactron не генерировался пакет установщика из-за
 отсутствия  npm install electron-updater@4.0.0
 
-6. Не запускался скриптом "dist":"build"
+6.(Косяк "Manish Jangir") Не запускался скриптом "dist":"build"
 c версией  "electron-builder": "^21.0.15",
 с версией 20.25.0 пошло
 npm run install electron-builder@20.25.0 --save-dev
  npm install electron@2.0.8
 
-7. Ошибка
+7. (Косяк "Manish Jangir")Ошибка
    Not allowed to load local resource
    решилась при помощи
    .... BrowserWindow({
@@ -52,7 +52,7 @@ npm run install electron-builder@20.25.0 --save-dev
 "html-webpack-plugin": "3.2.0",
  можно игнорировать - это не ошибка
 
- 9. Инсталлированное приложение не отображало index.html
+ 9. (Косяк "Manish Jangir")Инсталлированное приложение не отображало index.html
   в режиме ("asar": true) сборщика
   проблема была в том, что в этом случае index.html оказывается внутри архива app.asar/build,
   а путь в main.dev.js  оставался прежним app/build - без архива
@@ -62,20 +62,8 @@ npm run install electron-builder@20.25.0 --save-dev
   которая и переключает путь в вариант без архивации.
 
 
-  10  Ошибка "модуль не найден"
-  при выполнении  "lint:eslint": "eslint --ignore-path .gitignore --ignore-pattern internals/scripts",
-  Изменил строчку в
-  D:\JavaScript\ElectronReactBoilerplate4\.eslintrc.js
-  config: './internals/webpack/webpack.prod.babel.js',
-  не идет
-зачем это
-  settings: {
-    'import/resolver': {
-      webpack: {
-        config: './internals/webpack/webpack.prod.babel.js',
-      },
-    },
-  },
+  10  ESLint Ошибка "модуль не найден" - решено
+
 
   11. Запуск "start" = "start": "cross-env NODE_ENV=production ME_ENV=me electron ./app/"
    запускает  выполнение
@@ -211,6 +199,30 @@ console.log(myObject);
  добавил  "console": "integratedTerminal",
  и при отладке открывается новое окно - Node Debug console
  в котором все и появляется.
+
+20. (Косяк "Manish Jangir") ESLint выдавал много ошибок из-за того что пытался анализировать
+app/electron/main.prod.js, который который прошел через транспайлер и минифицирован.
+включил app/electron/main.prod.js в .gitignore - все ок
+
+coverage
+app/build
+node_modules
+stats.json
+
+app/node_modules
+app/electron/main.prod.js
+app/electron/main.prod.js.map
+release
+
+# Cruft
+.DS_Store
+npm-debug.log
+.idea
+.vscode
+
+
+
+
 
 
 

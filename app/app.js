@@ -34,13 +34,12 @@ import { translationMessages } from './i18n';
 
 const { ipcRenderer, remote } = require('electron');
 
-
-console.log(ipcRenderer.sendSync('synchronous-message', 'ping')) // prints "pong"
+console.log(ipcRenderer.sendSync('synchronous-message', 'ping')); // prints "pong"
 
 ipcRenderer.on('asynchronous-reply', (event, arg) => {
-  console.log(arg) // prints "pong"
-})
-ipcRenderer.send('asynchronous-message', 'ping')
+  console.log(arg); // prints "pong"
+});
+ipcRenderer.send('asynchronous-message', 'ping');
 
 // Observe loading of Open Sans (to remove open sans, remove the <link> tag in
 // the index.html file and this observer)
@@ -78,7 +77,7 @@ if (module.hot) {
     render(translationMessages);
   });
 }
- // console.log('ddd');
+// console.log('ddd');
 // debugger;
 
 // Chunked polyfill for browsers without Intl support

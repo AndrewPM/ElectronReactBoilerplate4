@@ -1,10 +1,16 @@
 # Don't check auto-generated stuff into git
 coverage
-build
+app/build
 node_modules
 stats.json
+
+app/node_modules
+app/electron/main.prod.js
+app/electron/main.prod.js.map
+release
 
 # Cruft
 .DS_Store
 npm-debug.log
 .idea
+.vscode

@@ -91,14 +91,17 @@ app.on('ready', async () => {
   // prettier-ignore
   console.log('hhhhhhhhhhhh')
   ipcMain.on('asynchronous-message', (event, arg) => {
-    console.log(arg) // prints "ping"
-    event.reply('asynchronous-reply', 'pong1')
-  })
+    console.log(arg); // prints "ping"
+
+    event.reply('asynchronous-reply', 'pong1');
+  });
 
   ipcMain.on('synchronous-message', (event, arg) => {
-    console.log(arg) // prints "ping"
-    event.returnValue = 'pong2'
-  })
+    console.log(arg); // prints "ping"
+
+    // eslint-disable-next-line  no-param-reassign
+    event.returnValue = 'pong2';
+  });
 
   mainWindow.on('closed', () => {
     mainWindow = null;
