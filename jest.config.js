@@ -7,6 +7,10 @@ module.exports = {
     '!app/global-styles.js',
     '!app/*/*/Loadable.{js,jsx}',
   ],
+  modulePathIgnorePatterns: [
+    'app/electron/main.prod.js',
+    'app/electron/main.prod.js.map',
+  ],
   coverageThreshold: {
     global: {
       statements: 98,

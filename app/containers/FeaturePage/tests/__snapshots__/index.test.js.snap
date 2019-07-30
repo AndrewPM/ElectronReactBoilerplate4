@@ -3,20 +3,20 @@
 exports[`<FeaturePage /> should render its heading 1`] = `
 <div>
   <h1
-    class="H1-tncdg6-0 hpAKSC"
+    class="H1-sc-1qgiyve-0 bGJNun"
   >
     <span>
       Features
     </span>
   </h1>
   <ul
-    class="List-sc-1aai6b-0 gbaodI"
+    class="List-t42mne-0 ctKoOe"
   >
     <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
+      class="ListItem-sc-13tx40h-0 VCsXQ"
     >
       <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
+        class="ListItemTitle-sc-1si87vd-0 jyeKsW"
       >
         <span>
           Quick scaffolding
@@ -30,10 +30,10 @@ exports[`<FeaturePage /> should render its heading 1`] = `
       </p>
     </li>
     <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
+      class="ListItem-sc-13tx40h-0 VCsXQ"
     >
       <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
+        class="ListItemTitle-sc-1si87vd-0 jyeKsW"
       >
         <span>
           Instant feedback
@@ -51,10 +51,10 @@ exports[`<FeaturePage /> should render its heading 1`] = `
       </p>
     </li>
     <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
+      class="ListItem-sc-13tx40h-0 VCsXQ"
     >
       <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
+        class="ListItemTitle-sc-1si87vd-0 jyeKsW"
       >
         <span>
           Industry-standard routing
@@ -72,10 +72,10 @@ exports[`<FeaturePage /> should render its heading 1`] = `
       </p>
     </li>
     <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
+      class="ListItem-sc-13tx40h-0 VCsXQ"
     >
       <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
+        class="ListItemTitle-sc-1si87vd-0 jyeKsW"
       >
         <span>
           Offline-first
@@ -91,10 +91,10 @@ exports[`<FeaturePage /> should render its heading 1`] = `
       </p>
     </li>
     <li
-      class="ListItem-sc-27v6xc-0 fixMwZ"
+      class="ListItem-sc-13tx40h-0 VCsXQ"
     >
       <p
-        class="ListItemTitle-sc-1t4skn3-0 fWjsMZ"
+        class="ListItemTitle-sc-1si87vd-0 jyeKsW"
       >
         <span>
           Complete i18n Standard Internationalization & Pluralization

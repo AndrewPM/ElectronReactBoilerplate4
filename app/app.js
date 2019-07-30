@@ -32,7 +32,7 @@ import configureStore from './configureStore';
 // Import i18n messages
 import { translationMessages } from './i18n';
 
-const { ipcRenderer, remote } = require('electron');
+const { ipcRenderer } = require('electron');
 
 console.log(ipcRenderer.sendSync('synchronous-message', 'ping')); // prints "pong"
 

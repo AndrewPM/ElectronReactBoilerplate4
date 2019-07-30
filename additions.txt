@@ -219,6 +219,13 @@ release
 npm-debug.log
 .idea
 .vscode
+21. При тестировании coverage  не находил некий путь, заканчивающийся на webpack
+    Устранилось путем добавления
+     modulePathIgnorePatterns: [
+    'app/electron/main.prod.js',
+    'app/electron/main.prod.js.map',
+  ],
+  в jest.config.js
 
 
 
