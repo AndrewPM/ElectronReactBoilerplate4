@@ -227,6 +227,9 @@ npm-debug.log
   ],
   в jest.config.js
 
+22. MarkDown справка
+https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code
+
 
 
 
