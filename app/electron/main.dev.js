@@ -1,10 +1,7 @@
 /* eslint global-require: 0, no-console: 0 */
 import { app, BrowserWindow, ipcMain } from 'electron';
-// require('custom-env').env();
 
 let mainWindow = null;
-
-/* mainWindow.loadURL('http://localhost:3000'); */
 
 if (process.env.NODE_ENV === 'production') {
   const sourceMapSupport = require('source-map-support');
@@ -58,14 +55,9 @@ app.on('ready', async () => {
   });
   // mainWindow.setMenu(null) //this will r menu bar
 
-  /* mainWindow.loadURL('http://localhost:3000'); */
   let pathVar = '';
   if (process.env.ME_ENV === 'me') pathVar = 'app/build';
   else pathVar = 'app.asar/build';
-  // else pathVar = 'app/build';
-  /* console.log(process.env.ME_ENV);
-  console.log(pathVar);
-  console.log(process.env.ME_ENV === 'me'); */
 
   const path = require('path');
 
@@ -86,14 +78,12 @@ app.on('ready', async () => {
     mainWindow.show();
     mainWindow.focus();
   });
-
   // we expect 'rendererReady' notification from Renderer
   // prettier-ignore
-  console.log('hhhhhhhhhhhh')
   ipcMain.on('asynchronous-message', (event, arg) => {
     console.log(arg); // prints "ping"
 
-    event.reply('asynchronous-reply', 'pong1');
+    event.sender.send('asynchronous-reply', 'pong1');
   });
 
   ipcMain.on('synchronous-message', (event, arg) => {
@@ -102,6 +92,11 @@ app.on('ready', async () => {
     // eslint-disable-next-line  no-param-reassign
     event.returnValue = 'pong2';
   });
+
+  // prettier-ignore
+  require('ffi')()
+    .then({})
+    .catch(() => {});
 
   mainWindow.on('closed', () => {
     mainWindow = null;
