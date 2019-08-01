@@ -94,9 +94,14 @@ app.on('ready', async () => {
   });
 
   // prettier-ignore
-  /* require('ffi')()
-    .then({})
-    .catch(() => {}); */
+  const ffi =  require('ffi'); // ()
+  // .then({})
+  // .catch(() => {});
+  const libm = ffi.Library(`${__dirname}/rdmprotlite.dll`, {
+    GetLibVer: ['int', ['void']],
+  });
+  const res = libm.GetLibVer(null);
+  console.log(res);
 
   mainWindow.on('closed', () => {
     mainWindow = null;

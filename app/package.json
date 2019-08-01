@@ -11,6 +11,7 @@
   },
   "main": "./electron/main.prod.js",
   "scripts": {},
-  "dependencies": {},
+  "dependencies": {
+  },
   "devDependencies": {}
 }
