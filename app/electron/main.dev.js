@@ -94,9 +94,9 @@ app.on('ready', async () => {
   });
 
   // prettier-ignore
-  require('ffi')()
+  /* require('ffi')()
     .then({})
-    .catch(() => {});
+    .catch(() => {}); */
 
   mainWindow.on('closed', () => {
     mainWindow = null;

@@ -13,6 +13,8 @@
   "author": "Max Stoiber",
   "license": "MIT",
   "scripts": {
+    "1": "npm run dev",
+    "2": "npm run start-main-webpack-dev",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
@@ -58,9 +60,7 @@
     "package-win": "npm run release:clean && npm run build && build --win --x64",
     "dist": "build  --publish never",
     "re-ffi": "electron-rebuild -v 4.2.8  ffi",
-    "re-ref": "electron-rebuild -v 4.2.8  ref",
-    "1":"npm run dev",
-    "2":"npm run start-main-webpack-dev"
+    "re-ref": "electron-rebuild -v 4.2.8  ref"
   },
   "build": {
     "appId": "org.react-boilerplate",

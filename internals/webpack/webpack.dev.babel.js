@@ -28,6 +28,7 @@ module.exports = require('./webpack.base.babel')({
   },
 
   optimization: {
+    minimize: false,
     splitChunks: {
       chunks: 'all',
     },
@@ -82,7 +83,7 @@ module.exports = require('./webpack.base.babel')({
   target: 'electron-renderer',
 
   node: {
-    __dirname: false,
-    __filename: false,
+    __dirname: true,
+    __filename: true,
   },
 });
