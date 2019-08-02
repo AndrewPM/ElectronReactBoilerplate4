@@ -15,6 +15,7 @@
   "scripts": {
     "1": "npm run dev",
     "2": "npm run start-main-webpack-dev",
+    "3": "npm run start-main-dev",
     "analyze:clean": "rimraf stats.json",
     "preanalyze": "npm run analyze:clean",
     "analyze": "node ./internals/scripts/analyze.js",
@@ -59,8 +60,8 @@
     "package-linux": "npm run release:clean && npm run build && build --linux",
     "package-win": "npm run release:clean && npm run build && build --win --x64",
     "dist": "build  --publish never",
-    "re-ffi": "electron-rebuild -v 4.2.8  ffi",
-    "re-ref": "electron-rebuild -v 4.2.8  ref"
+    "re-ffi": "electron-rebuild ffi",
+    "re-ref": "electron-rebuild ref"
   },
   "build": {
     "appId": "org.react-boilerplate",
@@ -122,8 +123,6 @@
     "electron-debug": "^3.0.1",
     "express": "4.16.4",
     "ffi": "github:lxe/node-ffi#node-12",
-    "ref": "github:lxe/ref#node-12",
-    "ref-struct": "github:lxe/ref-struct#node-12",
     "fontfaceobserver": "2.1.0",
     "history": "4.9.0",
     "hoist-non-react-statics": "3.3.0",
@@ -143,6 +142,8 @@
     "react-router-dom": "5.0.0",
     "redux": "4.0.1",
     "redux-saga": "1.0.2",
+    "ref": "github:lxe/ref#node-12",
+    "ref-struct": "github:lxe/ref-struct#node-12",
     "reselect": "4.0.0",
     "sanitize.css": "8.0.0",
     "source-map-support": "^0.5.12",
@@ -224,6 +225,7 @@
     "webpack-dev-middleware": "3.6.2",
     "webpack-dev-server": "^3.7.2",
     "webpack-hot-middleware": "2.24.3",
+    "webpack-node-externals": "^1.7.2",
     "webpack-pwa-manifest": "4.0.0",
     "whatwg-fetch": "3.0.0"
   }

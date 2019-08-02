@@ -129,6 +129,6 @@ module.exports = options => ({
   node: options.node,
 
   devServer: options.devServer,
-  // externals: [...Object.keys(externals || {})],
-  externals: { ' ffi': 'ffi' },
+  //externals: [...Object.keys(externals || {})],
+  externals: { ffi: 'ffi' },
 });
