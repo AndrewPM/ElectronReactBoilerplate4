@@ -1,8 +1,8 @@
 {
-  "name": "reactron",
-  "productName": "Reactron",
+  "name": "elreblp4",
+  "productName": "ElReBlp4",
   "version": "1.0.0",
-  "description": "ReactBoilerplate 4.0 in electron",
+  "description": "ReactBoilerplate 4.0 in Electron",
   "license": "MIT",
   "copyright": "Mik Andr",
   "author": {
@@ -10,7 +10,19 @@
     "email": "xxxx@gmail.com"
   },
   "main": "./electron/main.prod.js",
-  "scripts": {},
-  "dependencies": {},
-  "devDependencies": {}
+  "scripts": {
+    "postinstall": "electron-rebuild  ./dependencies",
+    "re-ffi": "electron-rebuild ffi",
+    "re-ref": "electron-rebuild ref",
+    "re-struct": "electron-rebuild struct"
+  },
+  "dependencies": {
+    "d": "^1.0.1",
+    "ffi": "github:lxe/node-ffi#node-12",
+    "ref": "github:lxe/ref#node-12",
+    "ref-struct": "github:lxe/ref-struct#node-12"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.8.5"
+  }
 }

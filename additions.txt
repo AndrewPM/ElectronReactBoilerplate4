@@ -219,7 +219,7 @@ release
 npm-debug.log
 .idea
 .vscode
-21. При тестировании coverage  не находил некий путь, заканчивающийся на webpack
+21. При тестировании coverage  не находился некий путь, заканчивающийся на webpack
     Устранилось путем добавления
      modulePathIgnorePatterns: [
     'app/electron/main.prod.js',
@@ -235,6 +235,14 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code
     __dirname: true,
     __filename: true,
   }, все ОК
+
+24. Проблема Node-ffi и webpack
+    Решается в два этапа:
+      - объявление ffi как externals, что изымает этот модуль из бандла,(not found binding...)
+      - переинсталляция модуля ffi, (NODE несовпадение версий NODE )
+        см. здесь: https://stackoverflow.com/questions/46384591/node-was-compiled-against-a-different-node-js-version-using-node-module-versio
+
+25.
 
 
 

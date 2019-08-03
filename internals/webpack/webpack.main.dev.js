@@ -2,7 +2,6 @@ import path from 'path';
 import webpack from 'webpack';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import baseConfig from './webpack.base.babel';
-const nodeExternals = require('webpack-node-externals');
 
 export default baseConfig({
   devtool: 'source-map',
@@ -29,13 +28,10 @@ export default baseConfig({
       DEBUG_PROD: true,
       START_MINIMIZED: false,
     }),
-    // new webpack.ContextReplacementPlugin(/bindings$/, /^$/),
   ],
-
-  //externals: [nodeExternals()],
-  //externals: { ffi: 'ffi' },
+  externals: { ffi: 'ffi' },
   node: {
-    __dirname: true,
-    __filename: true,
+    __dirname: false,
+    __filename: false,
   },
 });

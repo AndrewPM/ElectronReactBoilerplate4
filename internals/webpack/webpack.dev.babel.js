@@ -3,7 +3,7 @@
  */
 
 const webpack = require('webpack');
-const ffi = require('ffi');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const port = process.env.IP || 3000;
@@ -83,7 +83,7 @@ module.exports = require('./webpack.base.babel')({
   target: 'electron-renderer',
 
   node: {
-    __dirname: true,
-    __filename: true,
+    __dirname: false,
+    __filename: false,
   },
 });
