@@ -29,7 +29,7 @@ export default baseConfig({
       START_MINIMIZED: false,
     }),
   ],
-  externals: { ffi: 'ffi' },
+  externals: { ffi: 'ffi', ref: 'ref' },
   node: {
     __dirname: false,
     __filename: false,

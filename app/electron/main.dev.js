@@ -94,14 +94,23 @@ app.on('ready', async () => {
   });
 
   // prettier-ignore
-  const ffi = require('ffi'); // ()
+  const ffi = require('ffi');
+  const ref = require('ref');
+  const  type16 = ref.coerceType('uint');
+  // ()
   // .then({})
   // .catch(() => {});
   const libm = ffi.Library(`${__dirname}/rdmprotlite.dll`, {
     GetLibVer: ['int', ['void']],
+    OpenLite: ['int', ['pointer', 'void']],
   });
-  const res = libm.GetLibVer(null);
-  // console.log(res);
+  const buf = new Buffer.from('d:/1.rdm', 'utf16le');
+  buf.type = type16;
+ // console.log(buf.deref());
+
+  let res = libm.GetLibVer(null);
+  res = libm.OpenLite(buf, null);
+   console.log(res);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
