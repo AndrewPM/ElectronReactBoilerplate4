@@ -97,16 +97,19 @@ app.on('ready', async () => {
   const ffi = require('ffi');
   const ref = require('ref');
   const StructType = require('ref-struct');
-  // .then({})
-  // .catch(() => {});
+  const ushort = ref.coerceType('ushort');
+  const refushort = ref.coerceType('ushort *');
+
   const libm = ffi.Library(`${__dirname}/rdmprotlite.dll`, {
     GetLibVer: ['int', ['void']],
-    OpenLite: ['int', ['pointer', 'void']],
+    OpenLite: ['uint', [refushort, 'int']],
   });
   let res = libm.GetLibVer(null);
-  const pathf = 'D:/1.rdm';
-  res = libm.OpenLite(pathf, null);
-  // console.log(res);
+  const buf = new Buffer.from('d:/1.rdm', 'utf16le');
+  // buf.type = refushort;
+
+  res = libm.OpenLite(buf, 0);
+  console.log(res);
 
   mainWindow.on('closed', () => {
     mainWindow = null;
