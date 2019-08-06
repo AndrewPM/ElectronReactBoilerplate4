@@ -102,13 +102,18 @@ app.on('ready', async () => {
 
   const libm = ffi.Library(`${__dirname}/rdmprotlite.dll`, {
     GetLibVer: ['int', ['void']],
-    OpenLite: ['uint', [refushort, 'int']],
+    OpenLite: ['uint', [refushort, 'pointer']],
+    GetDeviceName: ['uint', ['uint', refushort]],
   });
   let res = libm.GetLibVer(null);
   const buf = new Buffer.from('d:/1.rdm', 'utf16le');
   // buf.type = refushort;
+  res = libm.OpenLite(buf, ref.NULL);
 
-  res = libm.OpenLite(buf, 0);
+  const buf2 = Buffer.alloc(100);
+  //buf2.type = refushort;
+  res = libm.GetDeviceName(res, buf2);
+  res = buf2.toString('utf16le');
   console.log(res);
 
   mainWindow.on('closed', () => {
