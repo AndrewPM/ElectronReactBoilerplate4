@@ -94,13 +94,18 @@ app.on('ready', async () => {
   });
 
   // prettier-ignore
-  const ffi = require('ffi'); // ()
+  const ffi = require('ffi');
+  const ref = require('ref');
+  const StructType = require('ref-struct');
   // .then({})
   // .catch(() => {});
   const libm = ffi.Library(`${__dirname}/rdmprotlite.dll`, {
     GetLibVer: ['int', ['void']],
+    OpenLite: ['int', ['pointer', 'void']],
   });
-  const res = libm.GetLibVer(null);
+  let res = libm.GetLibVer(null);
+  const pathf = 'D:/1.rdm';
+  res = libm.OpenLite(pathf, null);
   // console.log(res);
 
   mainWindow.on('closed', () => {
