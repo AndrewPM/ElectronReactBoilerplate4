@@ -59,12 +59,10 @@
     "package-all": "npm run release:clean && npm run build && build -mwl",
     "package-linux": "npm run release:clean && npm run build && build --linux",
     "package-win": "npm run release:clean && npm run build && build --win --x64",
-    "dist": "build  --publish never",
-    "re-ffi": "electron-rebuild ffi",
-    "re-ref": "electron-rebuild ref"
+    "dist": "build  --publish never"
   },
   "build": {
-    "appId": "org.react-boilerplate",
+    "appId": "org.reactboilerplate4electron",
     "asar": true,
     "files": [
       "build",
@@ -72,9 +70,9 @@
       "electron/",
       "package.json"
     ],
-    "copyright": "©2018 React Boilerplate Electron App",
+    "copyright": "©2019 ReactBoilerplate4Electron App",
     "snap": {
-      "synopsis": "React Boilerplate Electron App"
+      "synopsis": "ReactBoilerplate4Electron App"
     },
     "win": {
       "target": [
@@ -82,7 +80,7 @@
           "target": "nsis"
         }
       ],
-      "publisherName": "React Boilerplate Official"
+      "publisherName": "AndrewPM"
     },
     "nsis": {
       "perMachine": true,

@@ -1,20 +1,17 @@
 {
-  "name": "elreblp4",
-  "productName": "ElReBlp4",
+  "name": "reactboilerplate4electron",
+  "productName": "ReactBoilerplate4Electron",
   "version": "1.0.0",
   "description": "ReactBoilerplate 4.0 in Electron",
   "license": "MIT",
-  "copyright": "Mik Andr",
+  "copyright": "AndrewPM",
   "author": {
-    "name": "Mik Andrew",
+    "name": "AndrewPM",
     "email": "xxxx@gmail.com"
   },
   "main": "./electron/main.prod.js",
   "scripts": {
-    "postinstall": "electron-rebuild  ./dependencies",
-    "re-ffi": "electron-rebuild ffi",
-    "re-ref": "electron-rebuild ref",
-    "re-struct": "electron-rebuild struct"
+    "postinstall": "electron-rebuild  ./dependencies"
   },
   "dependencies": {
     "d": "^1.0.1",
