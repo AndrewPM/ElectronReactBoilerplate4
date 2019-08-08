@@ -106,7 +106,7 @@ app.on('ready', async () => {
     GetDeviceName: ['uint', ['uint', refushort]],
   });
   let res = libm.GetLibVer(null);
-  const buf = new Buffer.from('d:/1.rdm', 'utf16le');
+  const buf = new Buffer.from('d:/фыва.rdm', 'utf16le');
   // buf.type = refushort;
   res = libm.OpenLite(buf, ref.NULL);
 
