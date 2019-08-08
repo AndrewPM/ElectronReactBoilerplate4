@@ -11,10 +11,7 @@
   },
   "main": "./electron/main.prod.js",
   "scripts": {
-    "postinstall": "electron-rebuild  ./dependencies",
-    "re-ffi": "electron-rebuild ffi",
-    "re-ref": "electron-rebuild ref",
-    "re-struct": "electron-rebuild struct"
+    "postinstall": "electron-rebuild  ./dependencies"
   },
   "dependencies": {
     "d": "^1.0.1",
