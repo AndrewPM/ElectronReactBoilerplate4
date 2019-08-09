@@ -48,7 +48,7 @@ app.on('ready', async () => {
     height: 728,
     webPreferences: {
       nodeIntegration: true,
-      webSecurity: false,
+      webSecurity: true,
       plugins: true, // Что это?
       partition: 'persist:webviewsession', // Что это?
     },
@@ -111,7 +111,7 @@ app.on('ready', async () => {
   res = libm.OpenLite(buf, ref.NULL);
 
   const buf2 = Buffer.alloc(100);
-  //buf2.type = refushort;
+  // buf2.type = refushort;
   res = libm.GetDeviceName(res, buf2);
   res = buf2.toString('utf16le');
   console.log(res);
