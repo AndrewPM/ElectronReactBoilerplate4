@@ -1,0 +1,274 @@
+--------------------------------------------------------------
+   Предисловие 
+--------------------------------------------------------------
+  
+  Библиотеки будут 32 битные, поэтому вся разработка должна быть проведена в 32-битном режиме.
+  Для этого нужно иметь возможность устанавливать и активировать 32 битные версии nodejs и архитектуры
+  Лучше, если скрипты будут запускаться посредством  Yarn.
+--------------------------------------------------------------
+   Инсталляция
+--------------------------------------------------------------   
+    --- Глобальные установки --- 
+  
+   1. Сначала удалить ВСЕ предыдущие установки nodejs
+    https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/
+   
+   2. Установить nvm 
+     Получить версию nvm 
+	 "nvm version" 
+   3. Установить node 
+     - получить список версий node 
+	 "nvm list available"
+	
+	 Установить 32-битную версию nodejs посредством nvm
+	 ( Можно сначала установить nodejs посредством инсталлятора windows, 
+	  т.к. инсталлятор устанавливает еще какие-то полезные программы (python, choco ....), 
+	  а потом nodejs удалить средствами Windows, так, 
+	  как указано в https://www.sitepoint.com/quick-tip-multiple-versions-node-nvm/
+	  или
+	  https://stackoverflow.com/questions/20711240/how-to-completely-remove-node-js-from-windows
+	 )
+	
+	"nvm install v12.16.1  32"	
+	
+	Включить её
+	"nvm use v12.16.1  32"
+	
+	Проверить версию node 
+     "node -v"
+  
+   4. Установить 32-битный режим работы 
+      
+	  Проверить "npm arch"
+	  Если ответ - 
+ 	      System Default: 64-bit.
+          Currently Configured: 32-bit.
+	  
+	  Установить "npm arch 32"
+	       Ответ -
+		   System Default: 32-bit.
+          Currently Configured: 32-bit.
+   
+   5. Ставим yarn - замена npm
+        "choco install yarn" - ( choco был установлен  инсталлятором nodejs для виндоуз )
+		
+   6. Ставим rimraf  -  A deep deletion module for node
+        "npm install rimraf -g"
+	 
+	 ---Библиотеки и программы 	для подключения нативного модуля---
+	 
+	 Здесь есть особенности описанные в 
+	  https://stackoverflow.com/questions/46384591/node-was-compiled-against-a-different-node-js-version-using-node-module-vers	
+   
+   7.  Ставим  node-gyp 
+         "npm install -g node-gyp"
+   
+       ( далее согласно : https://github.com/nodejs/node-gyp )
+   
+   8.  Ставим windows-build-tools 
+         "npm install --global --production windows-build-tools"
+	
+
+	  --- Локальные установки --- 
+	
+   	    их две(!!!!) 
+	
+	первая - в  корневой папке проекта - это "boilerplate"
+	вторая - в папке "app" - это "electron"
+    
+	--- Установка  "boilerplate" ---
+  
+   Пункты 2, 3, 5, 6  выполнять в случае переустановки. 
+ 
+   1. Перейти в корневую папку 
+   2. Удалить .lock файлы 
+   3. Очистить  node_modules  
+      "rmdir /s /q node_modules"
+   4. Перейти в папку "app"
+     "chdir app" 
+   5. Удалить .lock файлы 
+   6. Очистить  node_modules  
+      "rmdir /s /q node_modules"
+   7. yarn install  
+   
+   Процесс  закончится с ошибкой 
+   " Error: C:\Program Files\nodejs\node.exe exited with code 1
+   .......
+   Error output:
+   error Couldn't find any versions for "externals" that matches "{ ffi: 'ffi', ref: 'ref' }" "
+   Это нормально т.к. нативные модули ffi, ref   еще не были подключены. 
+   Переходим ко следующему пункту.
+   
+  Библиотеки и программы 	для подключения нативных модулей
+	должны быть уже установлены.  
+	  
+   --- Установка  "electron" ---
+   
+   1. Перейти в папку "app"
+     "chdir app" 
+     Пункты 2 и 3  выполнять в случае переустановки 
+   2. Удалить .lock файлы 
+   3. Очистить  node_modules  
+      "rmdir /s /q node_modules"
+   4. yarn install 
+  
+   Появится сообщение: 
+    "Please choose a version of "externals" from this list: 0.0.1"
+	список состоит из одного элемента,
+	подтвердите.
+	Теперь все должно работать.
+
+-------------------------------------------------------------- 
+    Отладка
+--------------------------------------------------------------
+ 
+   --- Настройка отладчика в VisualStudioCode ---
+   
+     1.Возвратиться в корневую папку
+     
+	   "chdir ../"
+	 2. получить main.prod.js.map:
+         
+	 "npm run start-main-webpack-dev" 
+     
+     3. Запустить в новом терминальном окне "renderer" часть приложения:
+           	
+     "npm run dev"
+
+	это даст возможность  запускать отладчики одновременно и устанавливать
+      точки останова в main и в renderer процессах непосредственно из VScode
+      Приложение запускается самим отладчиком.
+      Горячая замена в renderer работает.
+   
+   Запустить отладчик в VisualStudioCode - опция "Electron: All"
+   При запуске    отладчика "ElectronRenderer"   выбрать файл     "******\app\build\index.html"
+   если точки останова остаются неактивными перезапустите 
+   
+     В окне NodeDebugConsole ,будут отображаться сообщения процесса "Electron: Main"
+	 В окне DebugConsole (Electron: Main) сообщения процесса "Electron: Main" НЕ ОТОБРАЖАЮТСЯ
+	 В окне DebugConsole (Electron: Renderer) будут отображаться сообщения процесса "Electron: Renderer"
+     Cообщения в DebugConsole - вторичны и повторяют сообщения из "console" Браузера.
+	 В случае некоторых ошибок сообщения появляются в только в "console" Браузера а в DebugConsole не доходят.
+	 Точки останова можно устанавливать и в "VisualStudioCode" и в "source" Браузера в "top -> file://D://WorkReact/ElectronReactBoilerplate4/app/build"
+	
+   --- Отладка в Chrome ---
+      
+	  а) Запустите в новом терминальном окне renderer часть приложения:
+        "npm run dev" 
+      б) Запустите в новом терминальном окне  приложение скриптом:
+        "start-main-dev": 
+      Приложение запустится и в окне Chrome( Инструменты отладчика) можно будет устанавливать точки останова,
+         Средства отладки см. здесь:   https://medium.com/@baphemot/intro-to-debugging-reactjs-applications-67cf7a50b3dd
+              console.log(myObject); debugger;
+              директивы нужно располагать в js коде, но не в jsx( не сработает),
+              а здесь сработает: ....\app\containers\HomePage\saga.js
+      Возможна отладка только renderer части приложения.
+      Горячая замена в renderer работает.
+	 
+	--- Запуск приложения в "production" виде без упаковки ---
+ 
+     Выполнить скрипты последовательно в одном и том же окне:
+    "start-main-prod": "cross-env NODE_ENV=production  BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.main.prod.js --colors",
+    "start-renderer-prod": "cross-env NODE_ENV=production BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.prod.babel.js --colors",
+    "start-electron-prod": "cross-env HOT=1 NODE_ENV=production BABEL_ENV=electron ME_ENV=me node --trace-warnings ./node_modules/electron/cli.js -r @babel/register ./app/electron/main.prod.js",
+     Отладчики подключаются, но отладка renderer части невозможна
+
+--------------------------------------------------------------
+    Дистрибутив
+--------------------------------------------------------------
+    --- Создание инсталлятора ---
+    
+	Выполнить скрипт:
+    "package": "npm run release:clean && npm run build && build  --publish never",
+    который запустит следующую цепочку скриптов:
+
+    "release:clean": "rimraf ./release",
+
+    "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
+    "build:main": "cross-env NODE_ENV=production BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.main.prod.js --colors",
+    "build:renderer": "cross-env NODE_ENV=production BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.prod.babel.js --colors",
+
+    "package-all": "npm run release:clean && npm run build && build -mwl",
+    "package-linux": "npm run release:clean && npm run build && build --linux",
+    "package-win": "npm run release:clean && npm run build && build --win --x64"
+	
+	
+   --- Запуск приложения подготовленного для упаковки до самой упаковки ---
+    Выполнить скрипт:
+	"start": "cross-env NODE_ENV=production ME_ENV=me electron ./app/"
+       сначала запустится  цепочка
+          "build": "concurrently \"npm run build:main\" \"npm run build:renderer\"",
+          "build:main": "cross-env NODE_ENV=production BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.main.prod.js --colors",
+          "build:renderer": "cross-env NODE_ENV=production BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/webpack/bin/webpack --config internals/webpack/webpack.prod.babel.js --colors",
+         а затем  выполнится и
+         "cross-env NODE_ENV=production ME_ENV=me electron ./app/"
+          что запустит приложение.
+
+--------------------------------------------------------------
+   Анализ и тестирование 
+--------------------------------------------------------------
+
+     --- Анализ приложения ---
+	 Информация о структуре, составляющих частях приложения
+	 Выполнить скрипт:
+	      "analyze"
+	  
+     --- тест ---
+	 Проверка синтаксиса,правил оформления кода,прогон тестов,    
+	 определение степени покрытия тестами
+	 Выполнить скрипт:
+	      "test"
+ 
+    --- линтирование ---
+     Проверка синтаксиса,  правил оформления кода,	 
+     Выполнить скрипт:
+	      "lint"
+     (скрипт  "test" тоже  выполняет  "lint")
+--------------------------------------------------------------
+      Очистки  
+--------------------------------------------------------------	
+ 
+	  --- Удалить пример ---
+	      Выполнить скрипт:
+	       "clean"
+     --- Очисть результаты тестов ---
+         Выполнить скрипт: 
+		 "clean:all"
+        (пример не удаляется!!!)
+		
+--------------------------------------------------------------
+	--- неупомянутые скрипты ---
+--------------------------------------------------------------
+ 
+ Остальные скрипты являются вспомогательными и вызываются 
+ либо другими скриптами, либо из  js-файлов  проекта
+ 
+--------------------------------------------------------------
+    --- Прочее ---
+--------------------------------------------------------------
+   
+   --- ME_ENV=me ---
+   
+   Инсталлированное приложение не отображало index.html
+    в режиме ("asar": true) сборщика
+    проблема была в том, что в этом случае index.html оказывается внутри архива app.asar/build,
+    а путь в main.dev.js  оставался прежним app/build - без архива
+    Для того, чтобы оставалась возможность запускать прод. версию 
+   ("start-electron-prod": "cross-env HOT=1 NODE_ENV=production BABEL_ENV=electron ME_ENV=me node --trace-warnings 
+      ./node_modules/electron/cli.js -r @babel/register ./app/electron/main.prod.js")
+   пришлось ввести переменную окружения
+   ME_ENV=me,  которая и переключает путь в вариант без архивации.
+  
+    --- pre-commit ---
+  
+  При каждой попытке закоммитить изменения в github сначала вызывается
+   pre-commit hook, который запускает процедуры описанные в package.json,
+   секция "pre-commit": "lint:staged".
+   Hook устанавливается  посредством    "pre-commit": "1.2.2"  https://github.com/observing/pre-commit
+   Hook прописывается в файле  ******\.git\hooks\pre-commit, если нужно проигнорировать проверки, 
+   просто переименуйте файл.
+ --------------------------------------------------------------
+"start-main-dev":         "cross-env HOT=1 NODE_ENV=development ME_ENV=me BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/electron/cli.js  ./app/electron/main.dev.js",
+
+ 
+ 

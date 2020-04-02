@@ -22,7 +22,7 @@
     "extract-intl": "node ./internals/scripts/extract-intl.js",
     "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
     "preinstall": "npm run npmcheckversion",
-    "postinstall": "electron-builder install-app-deps package.json",
+    "postinstall": "electron-builder install-app-deps",
     "prebuild": "npm run build:clean",
     "build:clean": "rimraf ./app/build",
     "presetup": "npm i chalk shelljs",
