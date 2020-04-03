@@ -15,10 +15,11 @@
   },
   "dependencies": {
     "d": "^1.0.1",
+    "externals": "{ ffi: 'ffi', ref: 'ref', ref-struct: 'ref-struct'  ref-array: 'ref-array' }",
     "ffi": "github:lxe/node-ffi#node-12",
     "ref": "github:lxe/ref#node-12",
-    "ref-struct": "github:lxe/ref-struct#node-12",
-    "externals": "{ ffi: 'ffi', ref: 'ref' }"
+    "ref-array": "github:lxe/ref-array#node-12",
+    "ref-struct": "github:lxe/ref-struct#node-12"
   },
   "devDependencies": {
     "electron-rebuild": "^1.8.5"

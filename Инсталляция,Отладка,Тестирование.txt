@@ -268,7 +268,6 @@
    Hook прописывается в файле  ******\.git\hooks\pre-commit, если нужно проигнорировать проверки, 
    просто переименуйте файл.
  --------------------------------------------------------------
-"start-main-dev":         "cross-env HOT=1 NODE_ENV=development ME_ENV=me BABEL_ENV=electron node --trace-warnings -r @babel/register ./node_modules/electron/cli.js  ./app/electron/main.dev.js",
 
  
  
