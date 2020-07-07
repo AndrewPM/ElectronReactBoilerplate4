@@ -170,7 +170,7 @@
     "concurrently": "^4.1.1",
     "coveralls": "3.0.3",
     "css-loader": "2.1.1",
-    "electron": "^4.2.8",
+    "electron": "^7.2.4",
     "electron-builder": "^20.44.4",
     "electron-devtools-installer": "^2.2.4",
     "eslint": "^5.16.0",
